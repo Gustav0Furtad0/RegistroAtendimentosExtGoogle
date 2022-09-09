@@ -1,0 +1,22 @@
+body {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h1 {
+    width: 300px;
+    margin: 5px;
+}
+
+select { 
+    margin: 5px 0;
+}
+
+input {
+    margin: 5px 0 10px 0;
+}
+
+div {
+    width: 100%;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>Registro de atendimento</h1>
+    <div>
+        <h4 id="daydate"></h4>
+        <h4 id="atendimentos"></h4>
+    </div>
+
+    <div>
+        <select name="unidade" id="unidade">
+            <option value="ss">Secretaria de Saúde</option>
+            <option value="ubs">UBS's</option>
+            <option value="ciad">CIAD</option>
+            <option value="hps">HPS</option>
+            <option value="durl">DURL</option>
+            <option value="facen">FACEN</option>
+            <option value="oeste">Reg. Oeste</option>
+            <option value="dgde">DGDE</option>
+        </select> 
+        <textarea name="textoatendimento" id="texto" cols="40" rows="4" placeholder="<nome do solicitante> <descrição atendimento>"></textarea>
+        <button id="aja">Enviar atendimento</button>
+    </div>
+
+</body>
+
+</html>
