@@ -5,8 +5,6 @@ const fs = require('fs');
 
 app.use(cors());
 
-app.use(express.json());
-
 app.get('/lista', (req, res) => {
   res.sendFile(__dirname + '/atendimento.json')
 }); 
@@ -31,15 +29,22 @@ function addAtendimento(id, date, unidade, solici, desc) {
     solicitante: solici,
     descricao: desc
   }
-
-  fs.readFile('atendimento.json', function (err, map) {
-    if (err) return err;
+  console.log(atdObj)
+  fs.readFile('server/atendimento.json', function (err, map) {
+    if (err) {
+      console.log(err)
+      return err;
+    }
     else {
       let result = JSON.parse(map);
       result.atendimentos.push(atdObj);
       result = JSON.stringify(result);
-      fs.writeFile('atendimento.json', result, err => {
-        if (err) return err
+      fs.writeFile('server/atendimento.json', result, err => {
+        if (err) {
+          console.log(err)
+          return err;
+        }
+        else console.log('Registro feito com sucesso')
       });
     }
   });

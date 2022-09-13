@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', sendheader);
 
     function sendheader() {
-        texto = document.querySelector('#texto').value
-        unidade = document.querySelector('#unidade')
+        texto = document.querySelector('#texto').value;
+        unidade = document.querySelector('#unidade');
         unidade = unidade.options[unidade.selectedIndex].value;
-        let solicitante, desc
+        let solicitante, desc;
         [solicitante, ...desc] = texto.split(' ');
         desc = desc.join(' ');
         xhttp = new XMLHttpRequest();
