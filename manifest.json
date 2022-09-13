@@ -3,7 +3,7 @@
     "version" : "1.8",
     "description" : "Registro de atendimentos Branet",
     "browser_action" : {
-        "default_popup" : "assets/index.html"
+        "default_popup" : "extension/index.html"
     },
     "manifest_version" : 2
 }

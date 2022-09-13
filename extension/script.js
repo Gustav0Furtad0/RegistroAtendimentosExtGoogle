@@ -1,19 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     let today = new Date();
 
     var data = document.querySelector("#daydate");
     var btn = document.querySelector("#aja");
-    var formatdate = `${today.getDay()}/${today.getMonth()}/${today.getFullYear()}`;
+    var formatdate = `${today.getDate()}/${today.getMonth() <= 9 ? `0${today.getMonth()+1}` : today.getMonth()+1}/${today.getFullYear()}`;
     data.innerHTML =  formatdate;
 
     function getAtendimentos() {
         let requestURL = 'http://192.168.0.165:3000/lista';
-        let request = new XMLHttpRequest();
+        let request = new XMLHttpRequest(); 
         request.open('GET', requestURL);
         request.responseType = 'json';
         request.send('teste');
-        request.onload = function () {
+        request.onload = () => {
             let resposta = request.response.atendimentos;
             document.querySelector('#atendimentos').innerHTML = `Número de atendimentos: ${resposta.length}`;
         }
@@ -23,9 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btn.addEventListener('click', sendheader);
 
+    var descform = document.querySelector('#texto');
+
     function sendheader() {
-        texto = document.querySelector('#texto').value;
-        unidade = document.querySelector('#unidade');
+        let texto = descform.value;
+        let unidade = document.querySelector('#unidade');
         unidade = unidade.options[unidade.selectedIndex].value;
         let solicitante, desc;
         [solicitante, ...desc] = texto.split(' ');
@@ -37,8 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
         xhttp.onreadystatechange = () => {
             if(xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
                 getAtendimentos();
+                descform.value = '';
             }
         };
         xhttp.send();
-    }
+    };
 }); 
