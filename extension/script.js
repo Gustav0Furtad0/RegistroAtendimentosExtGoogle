@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let requestURL = 'http://192.168.0.165:3000/lista';
         let request = new XMLHttpRequest(); 
         request.open('GET', requestURL);
-        request.responseType = 'json';
+        request.responseType = 'json';  
         request.send('teste');
         request.onload = () => {
             let resposta = request.response.atendimentos;

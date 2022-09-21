@@ -13,32 +13,38 @@
     </div> 
 
     <div id="main">
-        <!-- <h1>Registro de atendimento</h1>
-        <div>
-            <h4 id="daydate"></h4>
-            <h4 id="atendimentos"></h4>
-        </div>
-
-        <div>
-            <select name="unidade" id="unidade">
-                <option value="ss">Secretaria de Saúde</option>
-                <option value="ubs">UBS's</option>
-                <option value="ciad">CIAD</option>
-                <option value="hps">HPS</option>
-                <option value="durl">DURL</option>
-                <option value="facen">FACEN</option>
-                <option value="oeste">Reg. Oeste</option>
-                <option value="dgde">DGDE</option>
-            </select> 
-            <textarea name="textoatendimento" id="texto" cols="40" rows="4" placeholder="<nome do solicitante> <descrição atendimento>"></textarea>
-            <button id="aja">Enviar atendimento</button>
-        </div> -->
-
+        
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="./js/script.js"></script>
     <script>
-        $("#header").load("./html/header.html");
+        $(window).on("load", () => {
+            $("#header").load("./html/header.html");
+            carregapag()
+        });
+
+        function carregapag (link = 'atendimentos') {
+            $("#main").load(`./html/${link}.html`, () => {
+                if (link == 'atendimentos') {
+                    carregaAtendimentos();
+                };
+            });
+        };
+
+        function carregaAtendimentos (...paramsBusca) {
+            $.ajax({
+                method: "GET",
+                url: "http://192.168.0.165:3000/lista"  
+            })
+            .done(function( msg ) {
+                let atendimentoobj = msg.atendimentos;
+                atendimentoobj.forEach(element => {
+                    console.log(element);
+                });
+                console.log(msg.numeroatendimentos);
+            });
+        };
     </script>
 </body>
 </html>
