@@ -22,13 +22,15 @@ function addAtendimento(id, date, unidade, solici, desc) {
         solicitante: solici,
         descricao: desc
     }
-    console.log(atdObj)
+    console.log(atdObj);
+    
     fs.readFile(raiz + '/atendimento.json', function (err, map) {
         if (err) {
             console.log(err)
             return err;
         } else {
             let result = JSON.parse(map);
+            result.numeroatendimentos[unidade] ++;
             result.atendimentos.push(atdObj);
             result = JSON.stringify(result);
             fs.writeFile(raiz + '/atendimento.json', result, err => {

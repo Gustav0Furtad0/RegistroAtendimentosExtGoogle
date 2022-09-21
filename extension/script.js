@@ -26,6 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function sendheader() {
         let texto = descform.value;
+        if(!texto) {
+            alert("Digite alguma coisa para registrar");
+            return;
+        }
         let unidade = document.querySelector('#unidade');
         unidade = unidade.options[unidade.selectedIndex].value;
         let solicitante, desc;
