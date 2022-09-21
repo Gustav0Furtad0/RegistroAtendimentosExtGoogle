@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+
+/* --- Variables --- */
+:root {
+    --principal: #1f1f1f;
+    --secondary: #303030;
+    --textprimary: rgb(255, 255, 255);
+}
+
 /* --- root --- */
 * {
     padding: 0;
@@ -10,25 +19,50 @@ img {
     max-width: 100%;
 }
 
-/* --- HEADER AND FOOTER --- */
+/* --- BODY --- */
+body {
+    background: var(--principal);
+    color: var(--textprimary);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+/* --- HEADER --- */
 #header { 
     display: flex;
     width: 100%;
     justify-content: space-around;
-    position: fixed;
+    align-items: center;
+    background: var(--secondary);
+    padding: 10px;
+}
+
+#header > h2 {
+    font-weight: 900;
+    border: solid 3px var(--textprimary);
+    padding: 3px;
 }
 
 #menu {
     display: flex;
+    box-sizing:inherit;
 }
 
 #menu > li {
+    cursor: pointer;
     list-style: none;   
-    margin: 5px;
+    padding: 5px;
+    border-right: solid 2px var(--textprimary);
 }
 
-#footer {
-    bottom: 0;
+#menu > li:last-child {
+    border: 0;
+}
+
+#menu > li:hover {
+    background: var(--textprimary);
+    color: var(--secondary);
+    transition: 0.5s;
 }
 
 /* --- MAIN --- */
