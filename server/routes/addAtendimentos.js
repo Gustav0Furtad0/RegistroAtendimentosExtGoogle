@@ -1,6 +1,9 @@
 const express = require('express');
 const app = module.exports = express();
 const fs = require('fs');
+const path = require('path');
+var raiz = path.dirname(process.mainModule.filename)
+
 
 app.get('/atendimento', (req, res) => {
     let query = req.query;
@@ -20,7 +23,7 @@ function addAtendimento(id, date, unidade, solici, desc) {
         descricao: desc
     }
     console.log(atdObj)
-    fs.readFile('../atendimento.json', function (err, map) {
+    fs.readFile(raiz + '/atendimento.json', function (err, map) {
         if (err) {
             console.log(err)
             return err;
@@ -28,7 +31,7 @@ function addAtendimento(id, date, unidade, solici, desc) {
             let result = JSON.parse(map);
             result.atendimentos.push(atdObj);
             result = JSON.stringify(result);
-            fs.writeFile('../atendimento.json', result, err => {
+            fs.writeFile(raiz + '/atendimento.json', result, err => {
                 if (err) {
                     console.log(err)
                     return err;
