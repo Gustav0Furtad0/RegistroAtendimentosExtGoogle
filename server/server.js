@@ -1,15 +1,21 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const path = require('path');
-var raiz = path.dirname(process.mainModule.filename)
 
 const addAtendimento = require('./routes/addAtendimentos')
-const resLista = require('./routes/resLista')
+const resLista = require('./routes/resLista');
 
+const os = require('os');
+const networkInfo = os.networkInterfaces();
+const PORT = 3000;
+
+const path = require('path')
+
+
+console.log()
 app.use(cors());
 
-app.use(express.static('client'))
+app.use(express.static(path.join(__dirname, 'client')))
 
 app.use(addAtendimento);  
 
@@ -17,9 +23,9 @@ app.use(resLista);
 
 app.get('/' , (req, res) => {
   console.log("pediu")
-  res.sendFile(raiz + '/client/index.html');
+  res.sendFile(__dirname + '/client/index.html');
 });
 
-app.listen(3000, () => {
-  console.log('Servidor hospedado em: "localhost:3000"');
+app.listen(PORT, () => {
+  console.log(`Servidor hospedado em: "${networkInfo.Ethernet[1].address}:${PORT} || localhost:${PORT}"`);
 });
