@@ -31,7 +31,12 @@ function addAtendimento(id, date, unidade, solici, desc) {
         } else {
             let result = JSON.parse(map);
             result.numeroatendimentos[unidade] ++;
-            result.atendimentos.push(atdObj);
+            result.atendimentos.unshift(atdObj);
+            result.atendimentos.sort((a, b) => {
+                if(a.id > b.id) return -1;
+                if(a.id < b.id) return 1;
+                return 0;
+            });
             result = JSON.stringify(result);
             fs.writeFile(raiz + '/atendimento.json', result, err => {
                 if (err) {

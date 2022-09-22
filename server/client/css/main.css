@@ -50,8 +50,9 @@ span, p {
 /* --- HEADER --- */
 #header { 
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background: var(--secondary);
     padding: 10px 200px;
@@ -70,6 +71,7 @@ span, p {
 }
 
 .menu > li {
+    transition: 0.5s;
     font-weight: 500;
     cursor: pointer;
     list-style: none;   
@@ -97,10 +99,15 @@ span, p {
 }
 
 /* numero atendimentos */
-#numAtendimentos {
+#numAtendimentos > ul {
     display: flex;
+    flex-wrap: wrap;
     list-style: none;
     justify-content: space-around;
+}
+
+#numAtendimentos li {
+    margin: 0 6px;
 }
 
 /* lista de atendimento */
@@ -111,7 +118,15 @@ span, p {
 }
 
 #lista .atendimento {
-    width: 45%;
+    width: 45%; 
+}
+
+.atendimento {
+    min-width: 370px;
+    background: var(--secondary);
+    padding: 15px;
+    margin: 25px 0;
+    border-radius: 10px;
 }
 
 .secUnSol {
@@ -121,12 +136,6 @@ span, p {
     justify-content: space-between;
 }
 
-.atendimento {
-    background: var(--secondary);
-    padding: 15px;
-    margin: 25px 0;
-    border-radius: 10px;
-}
 
 .atendimento > h4 > span {
     margin: 5px 0;

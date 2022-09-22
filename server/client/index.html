@@ -61,7 +61,7 @@
                 });
                 let numAtende = msg.numeroatendimentos;
                 for (let obj in numAtende) {
-                    $("#numAtendimentos").append(`
+                    $("#numAtendimentos").children("ul").append(`
                         <li>${obj.toUpperCase()+": "+numAtende[obj]}
                     `);
                 }
