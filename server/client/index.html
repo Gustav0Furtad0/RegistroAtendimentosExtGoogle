@@ -13,7 +13,7 @@
     </div> 
 
     <div id="main">
-        
+
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -40,7 +40,17 @@
             .done(function( msg ) {
                 let atendimentoobj = msg.atendimentos;
                 atendimentoobj.forEach(element => {
-                    console.log(element);
+                    $("#lista").append(`
+                    <div atd="${element.id}" class="atendimento">
+                        <h4>Id: <span>${element.id}</span></h2>
+                        <div class="secUnSol">
+                            <h4>Unidade: <span>${element.unidade.toUpperCase()}</span></h2>
+                            <h4>Solicitante: <span>${element.solicitante}</span></h2> 
+                        </div>
+                        <h4>Descrição</h3>
+                        <p>${element.descricao}</p>
+                    </div>
+                    `);
                 });
                 console.log(msg.numeroatendimentos);
             });

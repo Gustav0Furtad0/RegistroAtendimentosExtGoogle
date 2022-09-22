@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var descform = document.querySelector('#texto');
 
     function sendheader() {
+        today = new Date();
         let texto = descform.value;
         if(!texto) {
             alert("Digite alguma coisa para registrar");
