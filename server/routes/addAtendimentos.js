@@ -39,7 +39,7 @@ function addAtendimento(id, date, unidade, solici, desc) {
             });
             result = JSON.stringify(result);
             fs.writeFile(raiz + '/atendimento.json', result, err => {
-                if (err) {
+                if (err) {  
                     console.log(err)
                     return err;
                 }
