@@ -104,6 +104,16 @@ span, p {
 }
 
 /* lista de atendimento */
+#lista {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#lista .atendimento {
+    width: 45%;
+}
+
 .secUnSol {
     margin: 8px 0;
     display: flex;
