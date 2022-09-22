@@ -43,7 +43,7 @@
                     $("#lista").append(`
                     <div atd="${element.id}" class="atendimento">
                         <div class="secUnSol">
-                            <h4>Id: <span>${element.id}</span></h2>
+                            <h4>Id: <span>${element.id}</span> | ${element.date}</h2>
                             <ul class="menu">
                                 <li>Editar</li>
                                 <li>Remover</li>
@@ -57,9 +57,14 @@
                         <h4>Descrição</h4>
                         <p>${element.descricao}</p>
                     </div>
-                    `); 
+                    `);
                 });
-                console.log(msg.numeroatendimentos);
+                let numAtende = msg.numeroatendimentos;
+                for (let obj in numAtende) {
+                    $("#numAtendimentos").append(`
+                        <li>${obj.toUpperCase()+": "+numAtende[obj]}
+                    `);
+                }
             });
         };
     </script>

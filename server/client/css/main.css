@@ -96,6 +96,13 @@ span, p {
     padding: 50px 200px;
 }
 
+/* numero atendimentos */
+#numAtendimentos {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+
 /* lista de atendimento */
 .secUnSol {
     margin: 8px 0;
@@ -117,7 +124,7 @@ span, p {
 
 .atendimento > hr {
     border-top: solid 1px var(--textprimary);
-    margin: 5px 0;
+    margin: 30px 40px;
 }
 
 .atendimento .menu > li {
