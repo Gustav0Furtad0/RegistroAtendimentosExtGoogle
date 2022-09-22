@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 /* --- Variables --- */
 :root {
@@ -9,7 +9,7 @@
     --textsecondary: #e6e6e6;
 
     /* font */
-    --multfont: 1;
+    --multfont: 0px;
 }
 
 /* --- root --- */
@@ -34,6 +34,17 @@ body {
 
 h1 {
     font-weight: 300;
+    font-size: calc(45px + var(--multfont));
+}
+
+h4 {
+    font-size: calc(18px + var(--multfont));
+    font-weight: 400;
+}
+
+span, p {
+    font-size: calc(18px + var(--multfont));
+    font-weight: 300;
 }
 
 /* --- HEADER --- */
@@ -47,40 +58,47 @@ h1 {
 }
 
 #header > h2 {
+    font-size: 35px;
     font-weight: 900;
     border: solid 3px var(--textprimary);
     padding: 3px;
 }
 
-#menu {
+.menu {
     display: flex;
     box-sizing:inherit;
 }
 
-#menu > li {
+.menu > li {
+    font-weight: 500;
     cursor: pointer;
     list-style: none;   
     padding: 5px;
     border-right: solid 2px var(--textprimary);
 }
 
-#menu > li:last-child {
+.menu > li:last-child {
     border: 0;
 }
 
-#menu > li:hover {
+.menu > li:hover {
     background: var(--textprimary);
     color: var(--secondary);
     transition: 0.5s;
 }
 
-/* --- MAIN --- */
+#header li{
+    font-size:  calc(22px + var(--multfont));
+}
+
+/* --- MAIN --- */  
 #main {
     padding: 50px 200px;
 }
 
-/* lista */
+/* lista de atendimento */
 .secUnSol {
+    margin: 8px 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -93,8 +111,24 @@ h1 {
     border-radius: 10px;
 }
 
-.atendimento > h4 > span{
+.atendimento > h4 > span {
     margin: 5px 0;
-    color: var(--textsecondary);
+}
+
+.atendimento > hr {
+    border-top: solid 1px var(--textprimary);
+    margin: 5px 0;
+}
+
+.atendimento .menu > li {
+    font-size: calc(18px + var(--multfont));
     font-weight: 400;
+}
+
+.atendimento span:hover {
+    text-decoration: underline;
+}
+
+.atendimento h4, p, span, li {
+    cursor:context-menu;
 }
