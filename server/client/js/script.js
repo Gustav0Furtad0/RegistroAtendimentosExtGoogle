@@ -1,7 +1,8 @@
-function carregaAtendimentos (...paramsBusca) {
+function carregaAtendimentos (paramsBusca) {
     $.ajax({
         method: "GET",
-        url: "http://192.168.0.165:3000/lista"  
+        url: "http://192.168.0.165:3000/lista", 
+        data: {paramsBusca}
     })
     .done(function( msg ) {
         let atendimentoobj = msg.atendimentos;

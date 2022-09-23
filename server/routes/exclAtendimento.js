@@ -9,6 +9,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post('/excluir', (req, res) => {
-    console.log(req.body.id);
+    
     res.send(req.body.id);
 });
