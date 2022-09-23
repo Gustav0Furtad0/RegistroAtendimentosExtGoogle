@@ -45,6 +45,6 @@ function addAtendimento(id, date, unidade, solici, desc) {
                 }
                 else console.log('Registro feito com sucesso')
             });
-        }
+        };
     });
-}
+};

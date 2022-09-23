@@ -43,6 +43,6 @@ function excluiAtendimento(element, id) {
     })
     .done( msg => {
         $(element).parents()[2].remove();
-        alert("Atendimento excluído: " + msg);
+        alert("Atendimento excluído!");
     });
-}
+};
