@@ -12,7 +12,7 @@ function carregaAtendimentos (...paramsBusca) {
                     <h4>Id: <span>${element.id}</span> | ${element.date}</h2>
                     <ul class="menu">
                         <li>Editar</li>
-                        <li onclick="excluiAtendimento('${element.id}')">Remover</li>
+                        <li onclick="excluiAtendimento(this, '${element.id}')">Remover</li>
                     </ul>
                 </div>
                 <div class="secUnSol">
@@ -34,13 +34,14 @@ function carregaAtendimentos (...paramsBusca) {
     });
 };
 
-function excluiAtendimento(id) {
+function excluiAtendimento(element, id) {
     $.ajax({
         method: "POST",
         url: "http://192.168.0.165:3000/excluir",
         data: { id: id } 
     })
     .done( msg => {
+        $(element).parents()[2].remove();
         alert("Atendimento excluído: " + msg);
     });
 }
