@@ -1,10 +1,5 @@
 function carregaAtendimentos (paramsBusca) {
-    $.ajax({
-        method: "GET",
-        url: "http://192.168.0.165:3000/lista", 
-        data: {paramsBusca}
-    })
-    .done(function( msg ) {
+    recebeAtendimentos.then( msg => {
         let atendimentoobj = msg.atendimentos;
         atendimentoobj.forEach(element => {
             $("#lista").append(`
@@ -31,9 +26,22 @@ function carregaAtendimentos (paramsBusca) {
             $("#numAtendimentos").children("ul").append(`
                 <li>${obj.toUpperCase()+": "+numAtende[obj]}
             `);
-        }
+        };
     });
 };
+
+const recebeAtendimentos = new Promise(
+    resolve => {
+        $.ajax({
+            method: "GET",
+            async : true,
+            url: "http://192.168.0.165:3000/lista"
+        })
+        .done( msg => {
+            resolve(msg);
+        });
+    }
+);
 
 function excluiAtendimento(element, id) {
     var r = confirm("Quer mesmo excluir o atendimento?");
@@ -44,7 +52,6 @@ function excluiAtendimento(element, id) {
             data: { id: id } 
         })
         .done( msg => {
-            //$(element).parents()[2].remove();
             alert("Atendimento excluído!");
             carregapag();
         });
