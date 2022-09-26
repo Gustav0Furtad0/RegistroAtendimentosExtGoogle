@@ -1,5 +1,5 @@
 function carregaAtendimentos (paramsBusca) {
-    recebeAtendimentos.then( msg => {
+    recebeAtendimentos(paramsBusca).then( msg => {
         let atendimentoobj = msg.atendimentos;
         atendimentoobj.forEach(element => {
             $("#lista").append(`
@@ -30,18 +30,21 @@ function carregaAtendimentos (paramsBusca) {
     });
 };
 
-const recebeAtendimentos = new Promise(
-    resolve => {
-        $.ajax({
-            method: "GET",
-            async : true,
-            url: "http://192.168.0.165:3000/lista"
-        })
-        .done( msg => {
-            resolve(msg);
-        });
-    }
-);
+const recebeAtendimentos = paramsBusca => {
+    return new Promise(
+        resolve => {
+            $.ajax({
+                method: "GET",
+                async : true,
+                url: "http://192.168.0.165:3000/lista",
+                data: {paramsBusca}
+            })
+            .done( msg => {
+                resolve(msg);
+            });
+        }
+    )
+};
 
 function excluiAtendimento(element, id) {
     var r = confirm("Quer mesmo excluir o atendimento?");
