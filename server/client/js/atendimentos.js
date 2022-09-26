@@ -1,34 +1,42 @@
 function carregaAtendimentos (paramsBusca) {
     recebeAtendimentos(paramsBusca).then( msg => {
         let atendimentoobj = msg.atendimentos;
-        atendimentoobj.forEach(element => {
-            $("#lista").append(`
-            <div class="atendimento">
-                <div class="secUnSol">
-                    <h4>Id: <span>${element.id}</span> | ${element.date}</h2>
-                    <ul class="menu">
-                        <li onclick="alert('Ainda não é possível editar atendimentos...')">Editar</li>
-                        <li onclick="excluiAtendimento(this, '${element.id}')">Remover</li>
-                    </ul>
-                </div>
-                <div class="secUnSol">
-                    <h4>Unidade: <span>${element.unidade.toUpperCase()}</span></h2>
-                    <h4>Solicitante: <span>${element.solicitante}</span></h2> 
-                </div>
-                <hr>
-                <h4>Descrição</h4>
-                <p>${element.descricao}</p>
-            </div>
-            `);
-        });
+        insereListaAtendimentos(atendimentoobj);
         let numAtende = msg.numeroatendimentos;
-        for (let obj in numAtende) {
-            $("#numAtendimentos").children("ul").append(`
-                <li>${obj.toUpperCase()+": "+numAtende[obj]}
-            `);
-        };
+        insereNumAtendimentos(numAtende);
     });
 };
+
+function insereNumAtendimentos(numAtende){
+    for (let obj in numAtende) {
+        $("#numAtendimentos").children("ul").append(`
+            <li>${obj.toUpperCase()+": "+numAtende[obj]}
+        `);
+    };
+}
+
+function insereListaAtendimentos(atendimentoobj){
+    atendimentoobj.forEach(element => {
+        $("#lista").append(`
+        <div class="atendimento">
+            <div class="secUnSol">
+                <h4>Id: <span>${element.id}</span> | ${element.date}</h2>
+                <ul class="menu">
+                    <li onclick="alert('Ainda não é possível editar atendimentos...')">Editar</li>
+                    <li onclick="excluiAtendimento(this, '${element.id}')">Remover</li>
+                </ul>
+            </div>
+            <div class="secUnSol">
+                <h4>Unidade: <span>${element.unidade.toUpperCase()}</span></h2>
+                <h4>Solicitante: <span>${element.solicitante}</span></h2> 
+            </div>
+            <hr>
+            <h4>Descrição</h4>
+            <p>${element.descricao}</p>
+        </div>
+        `);
+    });
+}
 
 const recebeAtendimentos = paramsBusca => {
     return new Promise(
