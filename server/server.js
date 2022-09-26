@@ -5,6 +5,7 @@ const cors = require('cors');
 const addAtendimento = require('./routes/addAtendimentos')
 const resLista = require('./routes/resLista');
 const exclAtendimento = require('./routes/exclAtendimento');
+const editAtendimento = require('./routes/editAtendimentos')
 
 const os = require('os');
 const networkInfo = os.networkInterfaces();
@@ -15,9 +16,11 @@ const path = require('path')
 app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'client')))
+
 app.use(addAtendimento);  
 app.use(resLista);
-app.use(exclAtendimento)
+app.use(exclAtendimento);
+//app.use(editAtendimento);
 
 app.get('/' , (req, res) => {
   console.log("pediu")

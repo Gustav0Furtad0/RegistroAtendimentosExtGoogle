@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     var data = document.querySelector("#daydate");
     var btn = document.querySelector("#aja");
     var formatdate = `${today.getDate()}/${today.getMonth() <= 9 ? `0${today.getMonth()+1}` : today.getMonth()+1}/${today.getFullYear()}`;
-    data.innerHTML =  formatdate;
+    var dataForm = document.querySelector("#dataatendimento");
+    data.innerHTML = formatdate;
 
     function getAtendimentos() {
         let requestURL = 'http://192.168.0.165:3000/lista';
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         [solicitante, ...desc] = texto.split(' ');
         desc = desc.join(' ');
         xhttp = new XMLHttpRequest();
-        let url = `http://192.168.0.165:3000/atendimento?solicitante=${solicitante}&desc=${desc}&unidade=${unidade}&data=${formatdate}&id=${today.getTime()}`;
+        let url = `http://192.168.0.165:3000/atendimento?solicitante=${solicitante}&desc=${desc}&unidade=${unidade}&data=${dataForm.value}&id=${today.getTime()}`;
         xhttp.open("GET", url);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.onreadystatechange = () => {
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 getAtendimentos();
                 descform.value = '';
             }
-        };
+        };  
         xhttp.send();
     };
 }); 

@@ -17,17 +17,20 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="./js/script.js"></script>
+    <script src="./js/atendimentos.js"></script>
+    <script src="./js/relatorios.js"></script>
     <script>
         $(window).on("load", () => {
             $("#header").load("./html/header.html");
-            carregapag()
+            carregapag();
         });
 
         function carregapag (link = 'atendimentos') {
             $("#main").load(`./html/${link}.html`, () => {
                 if (link == 'atendimentos') {
                     carregaAtendimentos();
+                } else if (link == 'relatorios') {
+                    carregaRelatorios();
                 };
             });
         };
