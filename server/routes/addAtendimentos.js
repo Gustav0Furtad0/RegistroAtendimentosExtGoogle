@@ -7,20 +7,21 @@ var raiz = path.dirname(process.mainModule.filename)
 
 app.get('/atendimento', (req, res) => {
     let query = req.query;
-    if(addAtendimento(query.id, query.data, query.unidade, query.solicitante, query.desc))
+    if(addAtendimento(query.id, query.data, query.unidade, query.solicitante, query.desc, query.tipo))
         res.send('ERRO');
     else
         res.send();
 });
 
 
-function addAtendimento(id, date, unidade, solici, desc) {
+function addAtendimento(id, date, unidade, solici, desc, tipo) {
     let atdObj = {
         id: id,
         date: date,
         unidade: unidade,
         solicitante: solici,
-        descricao: desc
+        descricao: desc,
+        tipo: tipo
     }
     console.log(atdObj);
     

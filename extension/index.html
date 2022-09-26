@@ -16,7 +16,15 @@
     </div>
 
     <div>
-        <input type="date" id="dataatendimento" name="dia" required">
+        <div>
+            <input type="date" id="dataatendimento" name="dia" required">
+        </div>
+        <select name="tipoatd" id="tipoatd">
+            <option value="sistema">DOMS</option>
+            <option value="hardware">Hardware</option>
+            <option value="rede">Rede</option>
+            <option value="software">Software</option>
+        </select>
         <select name="unidade" id="unidade">
             <option value="ss">Secretaria de Saúde</option>
             <option value="ubs">UBS's</option>

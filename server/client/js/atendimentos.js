@@ -27,8 +27,9 @@ function insereListaAtendimentos(atendimentoobj){
                 </ul>
             </div>
             <div class="secUnSol">
-                <h4>Unidade: <span>${element.unidade.toUpperCase()}</span></h2>
-                <h4>Solicitante: <span>${element.solicitante}</span></h2> 
+                <h4>Unidade: <span>${element.unidade.toUpperCase()}</span></h4>
+                <h4>Solicitante: <span>${element.solicitante}</span></h4>
+                <h4>Tipo: <span>${element.tipo[0].toUpperCase() + element.tipo.substring(1)}</span></h4>
             </div>
             <hr>
             <h4>Descrição</h4>

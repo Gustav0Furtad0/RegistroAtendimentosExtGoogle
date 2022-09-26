@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     var btn = document.querySelector("#aja");
     var formatdate = `${today.getDate()}/${today.getMonth() <= 9 ? `0${today.getMonth()+1}` : today.getMonth()+1}/${today.getFullYear()}`;
     var dataForm = document.querySelector("#dataatendimento");
+    var descform = document.querySelector('#texto');
+    var desctipo = document.querySelector('#tipoatd')
     data.innerHTML = formatdate;
 
     function getAtendimentos() {
@@ -23,11 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btn.addEventListener('click', sendheader);
 
-    var descform = document.querySelector('#texto');
+    
 
     function sendheader() {
         today = new Date();
         let texto = descform.value;
+        let tipo = desctipo.value;
         if(!texto) {
             alert("Digite alguma coisa para registrar");
             return;
@@ -38,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         [solicitante, ...desc] = texto.split(' ');
         desc = desc.join(' ');
         xhttp = new XMLHttpRequest();
-        let url = `http://192.168.0.165:3000/atendimento?solicitante=${solicitante}&desc=${desc}&unidade=${unidade}&data=${dataForm.value}&id=${today.getTime()}`;
+        let url = `http://192.168.0.165:3000/atendimento?solicitante=${solicitante}&desc=${desc}&unidade=${unidade}&data=${dataForm.value}&id=${today.getTime()}&tipo=${tipo}`;
         xhttp.open("GET", url);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.onreadystatechange = () => {
