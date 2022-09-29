@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post('/excluir', (req, res) => {
-    var unidade;
+    var unidade, tipo;
     fs.readFile(raiz + '/atendimento.json', function (err, map) {
         if (err) {
             console.log(err);
@@ -19,6 +19,7 @@ app.post('/excluir', (req, res) => {
             let atendimentos = result.atendimentos.filter( atendimentoobj => {
                 if(atendimentoobj.id == req.body.id) {
                     unidade = atendimentoobj.unidade;
+                    tipo = atendimentoobj.tipo;
                     return 0;
                 } else {
                     return 1;
@@ -26,6 +27,7 @@ app.post('/excluir', (req, res) => {
             });
             result.atendimentos = atendimentos;
             result.numeroatendimentos[unidade] --;
+            result.tipoatendimento[tipo] --;
             result = JSON.stringify(result);
             fs.writeFile(raiz + '/atendimento.json', result, err => {
                 if (err) {  

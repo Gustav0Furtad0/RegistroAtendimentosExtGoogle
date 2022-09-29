@@ -32,6 +32,7 @@ function addAtendimento(id, date, unidade, solici, desc, tipo) {
         } else {
             let result = JSON.parse(map);
             result.numeroatendimentos[unidade] ++;
+            result.tipoatendimento[tipo] ++;
             result.atendimentos.unshift(atdObj);
             result.atendimentos.sort((a, b) => {
                 if(a.id > b.id) return -1;
