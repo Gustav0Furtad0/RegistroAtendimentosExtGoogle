@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" style=" --principal: #1f1f1f; --secondary: #303030; --textprimary: #ffffff; --textsecondary: #e6e6e6;">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BRANET - TI Atendimentos</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,200" />
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
@@ -17,12 +18,17 @@
 
     </div>
 
+    <div id="sidemenu">
+
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="./js/atendimentos.js"></script>
     <script src="./js/relatorios.js"></script>
     <script>
         $(window).on("load", () => {
             $("#header").load("./html/header.html");
+            $("#sidemenu").load("./html/sidemenu.html");
             carregapag();
         });
 
@@ -35,6 +41,59 @@
                 };
             });
         };
-    </script>
+
+        var rootelement
+
+        function lightmode(){
+            rootelement = getComputedStyle(document.documentElement)
+
+            var color1 =  rootelement.getPropertyValue('--principal');
+            var color2 =  rootelement.getPropertyValue('--secondary');
+            var color3 =  rootelement.getPropertyValue('--textprimary');
+            var color4 =  rootelement.getPropertyValue('--textsecondary');
+
+            rootelement = document.documentElement
+
+            if (color1 == ' #1f1f1f')
+                rootelement.style.setProperty('--principal', ' #ffffff')
+            else
+                rootelement.style.setProperty('--principal', ' #1f1f1f')
+            
+            if (color2 == ' #303030')
+                rootelement.style.setProperty('--secondary', ' #e6e6e6')
+            else
+                rootelement.style.setProperty('--secondary', ' #303030')
+
+            if (color3 == ' #ffffff')
+                rootelement.style.setProperty('--textprimary', ' #1f1f1f')
+            else
+                rootelement.style.setProperty('--textprimary', ' #ffffff')
+
+            if (color4 == ' #e6e6e6')
+                rootelement.style.setProperty('--textsecondary', ' #303030')
+            else
+                rootelement.style.setProperty('--textsecondary', ' #e6e6e6')
+        };
+
+        function tamanhofonte(tam) {
+            rootelement = getComputedStyle(document.documentElement);
+
+            let fontsize = rootelement.getPropertyValue('--multfont');
+
+            fontsize = fontsize.substring(0, fontsize.length - 2);
+
+            rootelement = document.documentElement;
+
+            if (tam) {
+                fontsize ++;
+                rootelement.style.setProperty('--multfont', `${fontsize}px`);
+            } else {
+                if (fontsize > 0) {
+                    fontsize --;
+                    rootelement.style.setProperty('--multfont', `${fontsize}px`);
+                }
+            }
+        }
+    </script>   
 </body>
 </html>
