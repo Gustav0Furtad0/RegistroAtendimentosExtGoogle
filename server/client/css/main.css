@@ -158,3 +158,9 @@ span, p {
 .atendimento h4, p, span, li {
     cursor:context-menu;
 }
+
+#relatorios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
