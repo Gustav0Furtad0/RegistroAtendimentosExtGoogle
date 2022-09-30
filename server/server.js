@@ -5,7 +5,7 @@ const cors = require('cors');
 const addAtendimento = require('./routes/addAtendimentos')
 const resLista = require('./routes/resLista');
 const exclAtendimento = require('./routes/exclAtendimento');
-const editAtendimento = require('./routes/editAtendimentos')
+//const editAtendimento = require('./routes/editAtendimentos')
 
 const os = require('os');
 const networkInfo = os.networkInterfaces();
