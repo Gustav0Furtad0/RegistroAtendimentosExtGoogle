@@ -1,3 +1,4 @@
+const bodyParser = require('body-parser');
 const express = require('express');
 const app = module.exports = express();
 const fs = require('fs');
@@ -35,8 +36,18 @@ function addAtendimento(id, date, unidade, solici, desc, tipo) {
             result.tipoatendimento[tipo] ++;
             result.atendimentos.unshift(atdObj);
             result.atendimentos.sort((a, b) => {
-                if(a.id > b.id) return -1;
-                if(a.id < b.id) return 1;
+                let dataA = a.date.split("-");
+                dataA = new Date(dataA[0], dataA[1], dataA[2]);
+                let dataB = b.date.split("-");
+                dataB = new Date(dataB[0], dataB[1], dataB[2]);
+                if      (dataA > dataB) 
+                    return -1
+                else if (dataA < dataB) 
+                    return 1
+                else {
+                    if(a.id > b.id) return -1;
+                    if(a.id < b.id) return 1;
+                }
                 return 0;
             });
             result = JSON.stringify(result);
